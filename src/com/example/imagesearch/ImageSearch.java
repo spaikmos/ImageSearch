@@ -27,6 +27,7 @@ public class ImageSearch extends Activity {
 	EditText etQuery;
 	GridView gvResults;
 	Button btnSearch;
+	String query;
 	ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
 	ImageResultArrayAdapter imageAdapter;
 	
@@ -50,12 +51,26 @@ public class ImageSearch extends Activity {
 		});
 		
         gvResults.setOnScrollListener(new EndlessScrollListener() {
-        @Override
-        public void onLoadMore(int page, int totalItemsCount) {
-    		Log.d("DEBUG", "Loading more items: " + totalItemsCount);
-    		
-
-        }
+	        @Override
+	        public void onLoadMore(int page, int totalItemsCount) {
+	    		//Log.d("DEBUG", "Loading more items: " + totalItemsCount);
+	    		AsyncHttpClient client = new AsyncHttpClient();
+	    		client.get("https://ajax.googleapis.com/ajax/services/search/images?rsz=8&" + 
+	    					"start=" + totalItemsCount + "&v=1.0&q=" + Uri.encode(query),
+	    					new JsonHttpResponseHandler() {
+	    			@Override
+	    			public void onSuccess(JSONObject response) {
+	    				JSONArray imageJsonResults = null;
+	    				try {
+	    					imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
+	    					imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
+	    					Log.d("DEBUG", imageResults.toString());
+	    				} catch (JSONException e) {
+	    					e.printStackTrace();
+	    				}
+	    			}
+	    		});
+	        }
         });
 
 	}
@@ -75,7 +90,7 @@ public class ImageSearch extends Activity {
 	}
 	
 	public void onImageSearch(View v) {
-		String query = etQuery.getText().toString();
+		query = etQuery.getText().toString();
 		Toast.makeText(this,  "Searching for " + query, Toast.LENGTH_LONG).show();
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get("https://ajax.googleapis.com/ajax/services/search/images?rsz=8&" + 
@@ -88,7 +103,7 @@ public class ImageSearch extends Activity {
 					imageJsonResults = response.getJSONObject("responseData").getJSONArray("results");
 					imageResults.clear();
 					imageAdapter.addAll(ImageResult.fromJSONArray(imageJsonResults));
-					Log.d("DEBUG", imageResults.toString());
+					//Log.d("DEBUG", imageResults.toString());
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
