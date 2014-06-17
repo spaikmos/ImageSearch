@@ -32,6 +32,10 @@
             android:name="com.example.imagesearch.ImageDisplay"
             android:label="@string/title_activity_image_display" >
         </activity>
+        <activity
+            android:name="com.example.imagesearch.ImageSettings"
+            android:label="@string/title_activity_image_settings" >
+        </activity>
     </application>
 
 </manifest>

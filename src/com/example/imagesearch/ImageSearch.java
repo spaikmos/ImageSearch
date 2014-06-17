@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -78,9 +79,22 @@ public class ImageSearch extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present
-		//getMenuInflater().inflate(R.menu.search, menu);
+		getMenuInflater().inflate(R.menu.image_display, menu);
 		return true;
 	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_settings:
+	        	showSettingsPage();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+
 	
 	public void setupViews() {
 		etQuery = (EditText) findViewById(R.id.etQuery);
@@ -109,5 +123,9 @@ public class ImageSearch extends Activity {
 				}
 			}
 		});
+	}
+	
+	public void showSettingsPage() {
+		query = "start";
 	}
 }

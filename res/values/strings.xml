@@ -7,5 +7,6 @@
     <string name="sButtonSearch">Search</string>
     <string name="title_activity_image_display">ImageDisplayActivity</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_image_settings">ImageSettings</string>
 
 </resources>
