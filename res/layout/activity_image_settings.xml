@@ -5,48 +5,49 @@
     tools:context="${packageName}.${activityClass}" >
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/spFileType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/textView5" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner1"
-        android:layout_below="@+id/spinner1" />
+        android:layout_alignLeft="@+id/spFileType"
+        android:layout_below="@+id/spFileType" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/spSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner2"
-        android:layout_below="@+id/spinner2" />
+        android:layout_alignLeft="@+id/spColor"
+        android:layout_below="@+id/spColor" />
 
     <Spinner
-        android:id="@+id/spinner4"
+        android:id="@+id/spType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner3"
-        android:layout_below="@+id/spinner3" />
+        android:layout_alignLeft="@+id/spSize"
+        android:layout_below="@+id/spSize" />
 
     <Spinner
-        android:id="@+id/spinner5"
+        android:id="@+id/spSafeSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner4"
-        android:layout_below="@+id/spinner4" />
+        android:layout_alignLeft="@+id/spType"
+        android:layout_below="@+id/spType" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/etSite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner5"
+        android:layout_alignLeft="@+id/spSafeSearch"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/spinner5"
-        android:ems="10" >
+        android:layout_below="@+id/spSafeSearch"
+        android:ems="10"
+        android:hint="google.com" >
 
         <requestFocus />
     </EditText>
@@ -55,8 +56,8 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText1"
-        android:layout_alignBottom="@+id/editText1"
+        android:layout_alignBaseline="@+id/etSite"
+        android:layout_alignBottom="@+id/etSite"
         android:layout_alignParentLeft="true"
         android:text="Site" />
 
@@ -64,7 +65,7 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner5"
+        android:layout_alignBottom="@+id/spSafeSearch"
         android:layout_alignParentLeft="true"
         android:text="Safe Search" />
 
@@ -72,7 +73,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner4"
+        android:layout_alignBottom="@+id/spType"
         android:layout_alignParentLeft="true"
         android:text="Type" />
 
@@ -80,7 +81,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner3"
+        android:layout_alignBottom="@+id/spSize"
         android:layout_alignParentLeft="true"
         android:text="Size" />
 
@@ -88,7 +89,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner2"
+        android:layout_alignBottom="@+id/spColor"
         android:layout_alignParentLeft="true"
         android:text="Color" />
 
@@ -96,8 +97,18 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/spinner1"
+        android:layout_alignBottom="@+id/spFileType"
         android:layout_alignParentLeft="true"
         android:text="File Type" />
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/etSite"
+        android:onClick="onSaveSetings"
+        android:text="Save Setings" />
 
 </RelativeLayout>
